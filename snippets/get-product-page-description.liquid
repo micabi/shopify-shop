@@ -1,0 +1,46 @@
+{% liquid
+  # 商品ページの時のmeta description
+  if request.page_type == 'product'
+
+    # 店名を削除
+    if product.title contains '【天白】'
+      assign shop_name = '天白本店'
+      assign item_name = product.title | remove: '【天白】' | replace: '【', ' ' | replace: '】', ' ' | strip | escape
+    endif
+
+    if product.title contains '【栄】'
+      assign shop_name = '栄店'
+      assign item_name = product.title | remove: '【栄】' | replace: '【', ' ' | replace: '】', ' ' | strip  | escape
+    endif
+
+    if product.title contains '【名東】'
+      assign shop_name = '名東店'
+      assign item_name = product.title | remove: '【名東】' | replace: '【', ' ' | replace: '】', ' ' | strip  | escape
+    endif
+
+    if product.title contains '【名古屋】'
+      assign shop_name = '名古屋駅前店'
+      assign item_name = product.title | remove: '【名古屋】' | replace: '【', ' ' | replace: '】', ' ' | strip  | escape
+    endif
+
+    # 価格の表記を整える
+    assign money = product.price | money | escape
+
+    # 現在を取得
+    assign today = 'now' | date: '%Y年%m月%d日'
+
+    # 在庫の有無を取得
+    if product.available == true
+      assign available = 'あり'
+    else
+      assign available = 'なし'
+    endif
+
+    # 上記をまとめて文章化する
+    #assign content = item_name | append: ' 【税込金額】 ' | append: money | append: ' 【管理番号】 ' | append: product.variants[0].sku | append: ' 【在庫】 ' | append: available | append: ' (' | append: today | append: '現在' | append: ')' | append: '【取扱店】' | append: shop_name | append: ' ※管理番号でお問い合わせください。'
+    assign content = ' 【税込】' | append: money | append: ' 【管理番号】' | append: product.variants[0].sku | append: ' 【在庫】' | append: available | append: ' (' | append: today | append: '現在' | append: ')' | append: '【取扱店】' | append: shop_name
+
+    echo content | escape | strip | truncate: 80
+
+  endif
+%}

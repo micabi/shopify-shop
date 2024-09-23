@@ -1,0 +1,263 @@
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+    .new-news_head {
+      position: relative;
+      padding: 0 0 0 1.5rem;
+    }
+
+    @media screen and (max-width: 749px) {
+      .new-news_head {
+        padding: 0;
+      }
+    }
+
+    .new-news_all {
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      text-decoration: none;
+    }
+
+    .new-news_all:hover,
+    .new-news_all:focus {
+      text-decoration: underline;
+    }
+
+    .new-news_body {
+      list-style-type: none;
+      padding: 0 0 0 1.5rem;
+    }
+
+    @media screen and (max-width: 749px) {
+      .new-news_body {
+        padding: 0;
+      }
+    }
+
+    .new-news_body .new-news_item {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dotted;
+    }
+
+    .new-news_body .new-news_item a {
+      text-decoration: none;
+    }
+
+    .new-news_body .new-news_item a:hover,
+    .new-news_body .new-news_item a:focus {
+      text-decoration: underline;
+    }
+
+    .new-news_date {
+      display: inline-block;
+      padding: 0 10px 0 0;
+    }
+
+    @media screen and (max-width: 749px) {
+      .new-news_date {
+        display: block;
+      }
+    }
+
+    .new-news_category {
+      display: inline-block;
+      padding: 0 10px;
+      line-height: 2;
+      border-radius: var(--badge-corner-radius);
+      color: #fff;
+    }
+
+    .new-news_category.chien {
+      background: var(--chien);
+      color: rgb(var(--color-foreground));
+    }
+
+    .new-news_category.campaign {
+      background: var(--campaign);
+    }
+
+    .new-news_category.important {
+      background: var(--important);
+    }
+{%- endstyle -%}
+
+{%- assign blog = blogs[section.settings['new-news']] -%}
+{% comment %} {{ blog }} {% endcomment %}
+<div id="new-news" class="section-{{ section.id }}-padding">
+  <div class="new-news_head">
+    <h2 class="inline-richtext {{ section.settings.new-news_heading_size }}">
+      {{- section.settings.title | escape -}}
+    </h2>
+    <a href="{{ blog.url }}" class="new-news_all">一覧をみる</a>
+
+    {%- if section.settings.description != blank
+      or section.settings.show_description
+      and section.settings.collection.description != empty
+    -%}
+      <div class="{{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {%- if section.settings.show_description -%}
+          {{ section.settings.collection.description }}
+        {%- else -%}
+          {{ section.settings.description -}}
+        {%- endif %}
+      </div>
+    {%- endif -%}
+  </div>
+  <!-- /.new-news_head -->
+
+  <ul class="new-news_body">
+    {% for article in blog.articles limit: section.settings.post_limit %}
+      {% comment %} {{ article | json }} {% endcomment %}
+      <li class="new-news_item">
+        {% if section.settings['new-news_date'] -%}
+          <span class="new-news_date">{{ article.published_at | date: '%Y年%m月%d日' }}</span>
+        {%- endif %}
+        <a href="{{ article.url }}">{{- article.title | escape -}}</a>
+        {% if section.settings['new-news_category'] and article.metafields.custom['news-category'] != blank -%}
+          <span class="new-news_category {% if article.metafields.custom['news-category'] == '配送遅延' %}chien{% elsif article.metafields.custom['news-category'] == 'キャンペーン' %}campaign{% elsif article.metafields.custom['news-category'] == '大切なお知らせ' %}important{% endif %}">
+            {{- article.metafields.custom['news-category'] -}}
+          </span>
+        {%- endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <!-- /.new-news_body -->
+</div>
+<!-- /#new-news -->
+{% schema %}
+{
+  "name": "お知らせ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "id": "title",
+      "type": "inline_richtext",
+      "label": "見出し",
+      "info": "タイトルを記述して下さい"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "説明を記入して下さい"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "説明を表示しない",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "description_style",
+      "label": "説明の表示スタイル",
+      "options": [
+        {
+          "value": "body",
+          "label": "本文"
+        },
+        {
+          "value": "subtitle",
+          "label": "サブタイトル"
+        },
+        {
+          "value": "uppercase",
+          "label": "大文字"
+        }
+      ],
+      "default": "body"
+    },
+    {
+      "id": "new-news",
+      "type": "blog",
+      "label": "おしらせを選択して下さい"
+    },
+    {
+      "type": "select",
+      "id": "new-news_heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "id": "post_limit",
+      "type": "range",
+      "label": "お知らせの表示件数(1～10件)を選択",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "id": "new-news_date",
+      "type": "checkbox",
+      "label": "日付を表示する",
+      "default": false
+    },
+    {
+      "id": "new-news_category",
+      "type": "checkbox",
+      "label": "お知らせカテゴリーを表示する",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "お知らせ"
+    }
+  ]
+}
+{% endschema %}

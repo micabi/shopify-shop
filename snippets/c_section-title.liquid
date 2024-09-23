@@ -1,0 +1,13 @@
+<h3 class="c_section-title {{ title_color }}">
+  {{ title }}
+</h3>
+<p>{{ section.settings.color }}</p>
+<style>
+  .c_section-title {
+    color: #333;
+  }
+
+  .title_color {
+    color: {{ section.settings.color }};
+  }
+</style>

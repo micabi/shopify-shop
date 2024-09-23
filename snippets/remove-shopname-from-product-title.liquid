@@ -1,0 +1,23 @@
+{% liquid
+  if request.page_type == 'product'
+
+    if product.title contains '【天白】'
+      assign item_name = product.title | remove: '【天白】' | escape
+    endif
+
+    if product.title contains '【栄】'
+      assign item_name = product.title | remove: '【栄】' | escape
+    endif
+
+    if product.title contains '【名東】'
+      assign item_name = product.title | remove: '【名東】' | escape
+    endif
+
+    if product.title contains '【名古屋】'
+      assign item_name = product.title | remove: '【名古屋】' | escape
+    endif
+
+    echo item_name | strip
+  endif
+%}
+

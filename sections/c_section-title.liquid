@@ -1,0 +1,34 @@
+<div class="section-{{ section.id }}">
+  {% render 'c_section-title',
+    title_color: 'title_color',
+    title: section.settings.title
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "render 確認用セクション",
+  "class": "test-wrap",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "見出し",
+      "default": "h3タイトル"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "テキストカラー",
+      "default": "#AE4747"
+    }
+  ],
+  "presets": [
+    {
+      "name": "render 確認用セクション",
+      "category": "カスタムパーツ"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,232 @@
+{{ 'section-sidebar.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+.sidebar + .sidebar {
+  margin-top: 3rem;
+}
+{%- endstyle -%}
+
+<!-- BEGIN sections: sidebar-group -->
+<div class="sidebar">
+  <span class="h3">ブランドから探す</span>
+  {%- if section.settings['brand-menu'] != blank -%}
+    <nav class="sidebar__inline-menu">
+      <ul class="list-menu" role="list">
+        {%- for link in section.settings['brand-menu'].links -%}
+          <li>
+            {% comment %} リンク {% endcomment %}
+            {%- if link.links != blank -%}
+              <header-menu>
+                <details id="Details-SideMenu-{{ forloop.index }}" class="" {%- if link.child_active -%}open{%- endif -%}>
+                  <summary
+                    id="SideMenu-{{ link.handle }}"
+                    class="sidebar__menu-item list-menu__item link focus-inset"
+                  >
+                    <span
+                      {%- if link.child_active %}
+                        class="sidebar__active-menu-item"
+                      {% endif %}
+                    >
+                      {{- link.title | escape -}}
+                    </span>
+                    {% render 'icon-caret' %}
+                  </summary>
+
+                  <div
+                    id="SideMenu-Content-{{ forloop.index }}"
+                    class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                    tabindex="-1"
+                  >
+                    <ul
+                      class="side-menu__list page-width{% if link.levels == 1 %} side-menu__list--condensed{% endif %}"
+                      role="list"
+                    >
+                      {% comment %} 子階層 {% endcomment %}
+                      {%- for childlink in link.links -%}
+                        <li>
+                          <a
+                            id="SideMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            href="{{ childlink.url }}"
+                            class="side-menu__link side-menu__link--level-2 link{% if childlink.current %} sidebar__active-menu-item{% endif %}"
+                            {% if childlink.current %}
+                              aria-current="page"
+                            {% endif %}
+                          >
+                            {{ childlink.title | escape }}
+                          </a>
+                          {% comment %} 子階層がなかったら {% endcomment %}
+                          {%- if childlink.links != blank -%}
+                            <ul class="list-unstyled" role="list">
+                              {%- for grandchildlink in childlink.links -%}
+                                <li>
+                                  <a
+                                    id="SideMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                    href="{{ grandchildlink.url }}"
+                                    class="side-menu__link link{% if grandchildlink.current %} sidebar__active-menu-item{% endif %}"
+                                    {% if grandchildlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ grandchildlink.title | escape }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </details>
+              </header-menu>
+
+              {% comment %} 子階層がなかったら {% endcomment %}
+            {%- else -%}
+              <a
+                id="SideMenu-{{ link.handle }}"
+                href="{{ link.url }}"
+                class="sidebar__menu-item list-menu__item link link--text focus-inset"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                <span
+                  {%- if link.current %}
+                    class="sidebar__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  {%- endif -%}
+</div>
+<!-- /.sidebar -->
+
+<div class="sidebar">
+  <span class="h3">カテゴリーから探す</span>
+  {%- if section.settings['category-menu'] != blank -%}
+    <nav class="sidebar__inline-menu">
+      {%- for link in section.settings['category-menu'].links -%}
+        <ul class="list-menu" role="list">
+        <li>
+          {% comment %} 子階層があったら {% endcomment %}
+          {%- if link.links != blank -%}
+            <header-menu>
+              <details id="Details-SideMenu-{{ forloop.index }}" class="" {%- if link.child_active -%}open{%- endif -%}>
+                <summary
+                  id="SideMenu-{{ link.handle }}"
+                  class="sidebar__menu-item list-menu__item link focus-inset"
+                >
+                  <span
+                    {%- if link.child_active %}
+                      class="sidebar__active-menu-item"
+                    {% endif %}
+                  >
+                    {{- link.title | escape -}}
+                  </span>
+                  {% render 'icon-caret' %}
+                </summary>
+
+                <div
+                  id="SideMenu-Content-{{ forloop.index }}"
+                  class="side-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                  tabindex="-1"
+                >
+                  <ul
+                    class="side-menu__list page-width{% if link.levels == 1 %} side-menu__list--condensed{% endif %}"
+                    role="list"
+                  >
+                    {% comment %} リンク {% endcomment %}
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a
+                          id="SideMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="side-menu__link side-menu__link--level-2 link{% if childlink.current %} side-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                        {% comment %} 子階層 {% endcomment %}
+                        {%- if childlink.links != blank -%}
+                          <ul class="list-unstyled" role="list">
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="SideMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="side-menu__link link{% if grandchildlink.current %} side-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </details>
+            </header-menu>
+            {% comment %} 子階層がなかったら {% endcomment %}
+          {%- else -%}
+            <a
+              id="SideMenu-{{ link.handle }}"
+              href="{{ link.url }}"
+              class="sidebar__menu-item list-menu__item link link--text focus-inset"
+              {% if link.current %}
+                aria-current="page"
+              {% endif %}
+            >
+              <span
+                {%- if link.current %}
+                  class="sidebar__active-menu-item"
+                {% endif %}
+              >
+                {{- link.title | escape -}}
+              </span>
+            </a>
+          {%- endif -%}
+        </li>
+      </ul>
+      {%- endfor -%}
+
+    </nav>
+    <!-- /.sidebar__inline-menu -->
+  {%- endif -%}
+</div>
+<!-- /.sidebar -->
+
+{% schema %}
+{
+  "name": "t:sections.sidebar.name",
+  "tag": "aside",
+  "class": "side-bar",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "brand-menu",
+      "label": "t:sections.sidebar.settings.label"
+    },
+    {
+      "type": "link_list",
+      "id": "category-menu",
+      "label": "t:sections.sidebar.settings.label"
+    }
+  ]
+}
+{% endschema %}
+<!-- End sections: sidebar-group -->

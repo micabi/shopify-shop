@@ -1,0 +1,375 @@
+@charset "utf-8";
+
+div.specExp {
+	box-sizing: border-box;
+	display: block;
+	margin: 0 auto;
+	padding: 10px !important;
+	overflow: hidden;
+	border: 1px solid #ffe4b7 !important;
+	border-radius: 10px;
+	background-color: #fff7ea;
+	font-weight: normal;
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "MS Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+div.specExp img {
+  display: block;
+}
+
+div.specExp div.title {
+  margin: 1.5rem 0 10px;
+	padding: 10px;
+	background-color: #ec1e25;
+	color: white;
+	font-size: 17px;
+	text-align: left;
+}
+
+div.specExp div.title small {
+	margin-left: 40px;
+	color: white;
+	font-size: 10px;
+}
+
+@media screen and (max-width: 749px) {
+  div.specExp div.title small {
+    margin-left: 0;
+    display: block;
+  }
+}
+
+div.specExp table.spec {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	/* font-size: 14px; */
+}
+
+div.specExp table.spec th,
+div.specExp table.spec td {
+	padding: 10px;
+	border: 1px dotted #ddd;
+	border-bottom: 1px dotted #ddd;
+}
+
+div.specExp table.spec th {
+	width: 14em;
+	background-color: #efefef;
+	font-weight: normal;
+}
+
+div.specExp table.spec td {
+	background-color: white;
+}
+
+@media screen and (max-width: 749px) {
+  div.specExp table.spec th,
+  div.specExp table.spec td {
+    display: block;
+    width: 100%;
+  }
+}
+
+div.specExp p {
+	margin-bottom: 1em;
+	color: rgba(var(--color-foreground), 0.75);
+	/* font-size: 13px; */
+	/* line-height: 1.4em; */
+}
+
+div.specExp table.spec.condition td b {
+	display: block;
+	/* width: 80px; */
+	height: 50px;
+	/* margin: 0 auto; */
+	/* margin-right: 10px; */
+	/* padding: 0.2em 0; */
+	/* float: left; */
+	border-radius: 5px;
+	font-size: 32px;
+	line-height: 50px;
+	text-align: center;
+}
+
+div.specExp table.spec.condition td.N b {
+	display: block;
+	width: 80px;
+	background-color: #9267c3;
+	color: white;
+}
+
+div.specExp table.spec.condition td.S b {
+	display: block;
+	width: 80px;
+	background-color: #657dc5;
+	color: white;
+}
+
+div.specExp table.spec.condition td.A b {
+	display: block;
+	width: 80px;
+	background-color: #66a9c4;
+	color: white;
+}
+
+div.specExp table.spec.condition td.AB b {
+	display: block;
+	width: 80px;
+	background-color: #7fc8ab;
+	color: white;
+}
+
+div.specExp table.spec.condition td.B b {
+	display: block;
+	width: 80px;
+	background-color: #a9c767;
+	color: white;
+}
+
+div.specExp table.spec.condition td.C b {
+	display: block;
+	width: 80px;
+	background-color: #c5aa65;
+	color: white;
+}
+
+div.specExp table.spec.condition td.D b {
+	display: block;
+	width: 80px;
+	background-color: #989898;
+	color: white;
+}
+
+div.specExp table.spec.condition td b + b {
+	margin: 0;
+}
+
+div.specExp table.spec.condition img {
+	display: block;
+	width: 50px;
+	height: 50px;
+}
+
+div.detailTxt.specExp div.itemimages {
+	display: none;
+}
+
+/* SMP */
+div.smpContent div.specExp {
+	width: auto;
+}
+
+div.smpContent div.specExp table.spec {
+	font-size: 11px;
+}
+
+div.smpContent div.specExp table.spec th {
+	width: 25%;
+}
+
+div.smpContent div.specExp table.spec th,
+div.specExp table.spec td {
+	padding: 5px;
+}
+
+div.smpContent div.specExp p {
+	font-size: 11px;
+}
+
+div.smpContent div.specExp table.spec.condition td b {
+	width: 40px;
+	height: 25px;
+	font-size: 20px;
+	line-height: 25px;
+}
+
+div.smpContent div.specExp div.title {
+	padding: 5px;
+	font-size: 13px;
+}
+
+div.smpContent div.specExp div.title small {
+	margin-left: 10px;
+}
+
+div.smpContent div.specExp h2 {
+	font-size: 11px !important;
+}
+
+div.smpContent div.specExp div.stock-contact {
+	padding: 0.5em;
+}
+
+div.smpContent div.specExp div.stock-contact ul li.name::before {
+	margin-right: 5px;
+	font-size: 13px;
+}
+
+div.smpContent div.specExp div.stock-contact ul li.name {
+	margin-right: 10px;
+	padding-left: 0;
+	font-size: 13px;
+}
+
+div.smpContent div.specExp div.stock-contact ul li.freedial {
+	font-size: 14px;
+}
+
+div.smpContent div.specExp div.stock-contact ul li {
+	height: 25px;
+	padding-left: 25px;
+	line-height: 25px;
+}
+
+div.smpContent div.specExp div.stock-contact ul li.email {
+	font-size: 12px;
+}
+
+div.stock-contact-container h2::before,
+div.stock-contact-container h2::after {
+	display: none;
+}
+
+div.smpContent div.itemimages ul li {
+	margin-bottom: 10px;
+}
+
+/* 連絡先 */
+div.stock-contact-container {
+	display: block;
+	width: 100%;
+	margin: 0 auto 15px;
+	background-repeat: repeat;
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "MS Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+div.stock-contact-container h2 {
+	display: block;
+	margin: 0;
+	margin: 15px;
+	padding: 0;
+	border: 0 !important;
+	font-weight: normal;
+	font-size: 21px;
+	text-align: center;
+}
+
+div.stock-contact-container h2::before {
+	display: inline-block;
+	margin: 0 10px;
+	content: "＼";
+	color: gray;
+}
+
+div.stock-contact-container h2::after {
+	display: inline-block;
+	margin: 0 10px;
+	content: "／";
+	color: gray;
+}
+
+div.stock-contact {
+	/* border:1px solid #e9e9e9; */
+	/* background-image:url("https://gigaplus.makeshop.jp/ueda78/images/diamond-bg.png"); */
+	/* border-radius:15px; */
+	overflow: hidden;
+	background-color: white;
+}
+
+div.stock-contact ul {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	float: left;
+	overflow: hidden;
+	font-size: 15px;
+	list-style: none;
+}
+
+div.stock-contact ul li {
+	box-sizing: border-box;
+	height: 40px;
+	margin-right: 20px;
+	padding-left: 40px;
+	float: left;
+	background-position: left center;
+	background-repeat: no-repeat;
+	line-height: 40px;
+}
+
+div.stock-contact ul li:first-child {
+	padding-left: 0;
+}
+
+div.stock-contact ul li.name::before {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 0 5px;
+	border-radius: 3px;
+	background-color: #eb1c24;
+	content: "在庫店";
+	color: #fff;
+	font-weight: normal;
+	font-size: 16px;
+}
+
+div.stock-contact ul li.name {
+	margin-right: 40px;
+	font-weight: bolder;
+	font-size: 16px;
+}
+
+div.stock-contact ul li.tel {
+	margin-right: 40px;
+	background-image: url("https://gigaplus.makeshop.jp/ueda78/images/icon-tel-pc.png");
+	font-size: 20px;
+}
+
+div.stock-contact ul li.freedial {
+	margin-right: 40px;
+	background-image: url("https://gigaplus.makeshop.jp/ueda78/images/icon-freedial-pc.png?v1");
+	background-size: 22px;
+	color: red;
+	font-weight: bolder;
+	font-size: 24px;
+}
+
+div.stock-contact ul li.email {
+	background-image: url("https://gigaplus.makeshop.jp/ueda78/images/icon-email-pc.png?v1");
+	background-size: 22px;
+}
+
+div.stock-contact ul li.email a {
+	color: red;
+	text-decoration: none;
+}
+
+div.stock-contact ul li.email a:hover {
+	text-decoration: underline;
+}
+
+div.stock-contact {
+	/*  background-color: #efefef; */
+	font-size: 12px;
+}
+
+div.stock-contact img {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+}
+
+div.smpContent div.stock-contact ul li.freedial {
+	background-size: contain;
+}
+
+div.smpContent div.stock-contact ul li.email {
+	background-size: contain;
+}
+
+div.smpContent div.stock-contact-container h2::before,
+div.smpContent div.stock-contact-container h2::after {
+	display: none !important;
+}

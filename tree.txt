@@ -1,0 +1,40 @@
+.
+├── assets
+│   └──　CSSファイル、JavaScriptファイル、画像ファイルを格納します。ここには下層ディレクトリは作成できない。
+├── config
+│   ├── settings_data.json　テーマに入れ込む変数を書き込む。presetsにはテーマのデフォルトの値が入っていて、currentにカスタマイズしたい値を追加すると上書きできる。
+│   └── settings_schema.json　管理画面の「テーマ設定」で設定できる項目を定義
+├── layout
+│   ├── password.liquid　パスワード設定時に表示する画面
+│   └── theme.liquid　全ページの共通となるheadタグ・bodyタグが記述されている。metaタグや共通のstyle,scriptタグはtheme.liquidに書く。
+├── locales
+│   ├── ja.json　翻訳用ファイル
+│   ├── ja.schema.json
+├── sections
+│   └── デフォルトで入っているsectionファイルを複製して変更するか、自分で一からHTMLを書いて作成。
+├── snippets
+│   └── sectionファイル内で呼び出すことができ、アイコンとして使うsvg・ボタン・ナビゲーションなど、使いまわしたいパーツを作成。
+├── templates
+│   ├── 各ページのテンプレートが入っている。中には呼び出すsectionとその順番を記述。
+│   ├── 404.json
+│   ├── article.json
+│   ├── blog.json
+│   ├── cart.json
+│   ├── collection.json
+│   ├── customers
+│   │   ├── account.json
+│   │   ├── activate_account.json
+│   │   ├── addresses.json
+│   │   ├── login.json
+│   │   ├── order.json
+│   │   ├── register.json
+│   │   └── reset_password.json
+│   ├── gift_card.liquid
+│   ├── index.json
+│   ├── list-collections.json
+│   ├── page.contact.json
+│   ├── page.json
+│   ├── password.json
+│   ├── product.json
+│   └── search.json
+

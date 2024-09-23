@@ -1,0 +1,16 @@
+{
+  "name": "t:sections.sidebar.name",
+  "type": "aside",
+  "sections": {
+    "sidebar": {
+      "type": "sidebar",
+      "settings": {
+        "brand-menu": "brand-menu",
+        "category-menu": "category-menu"
+      }
+    }
+  },
+  "order": [
+    "sidebar"
+  ]
+}
