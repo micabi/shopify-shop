@@ -5,6 +5,24 @@
   {% render 'header-drawer' %}
 {% endcomment %}
 
+{%- style -%}
+  .drawer__calender {
+    padding: 1.1rem 3rem 0;
+    font-size: 1.8rem;
+    color: rgb(var(--color-foreground));
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  }
+  .fc-col-header {
+    width: 100% !important;
+  }
+  .fc-daygrid-body {
+    width: 100% !important;
+  }
+  .fc-scrollgrid-sync-table {
+    width: 100% !important;
+  }
+{%- endstyle -%}
+
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary
@@ -123,6 +141,57 @@
               {%- endfor -%}
             </ul>
           </nav>
+
+          {% if section.settings.mobile_calendar %}
+            <div class="drawer__calender">
+              {%- if section.settings['mobile_calendar-title'] != blank -%}
+                <span class="h3">{{- section.settings['mobile_calendar-title'] | escape -}}</span>
+              {%- endif -%}
+              <div id="mobile_calendar"></div>
+              <p class="holiday"><span></span>&nbsp;名東店定休日</p>
+
+              <script src="{{'fullcalendar.min.js' | asset_url }}" defer="defer"></script>
+              <script src="{{'fullcalendar.ja.js' | asset_url }}" defer="defer"></script>
+              <script defer="defer">
+                document.addEventListener('DOMContentLoaded', () => {
+                  const calendarEl = document.getElementById('mobile_calendar');
+
+                  const calendar = new FullCalendar.Calendar(calendarEl, {
+                    googleCalendarApiKey: 'AIzaSyB7JY4my_rmnvrlEN1dfWfPlJrHQgdxKTg',
+                    initialView: 'dayGridMonth',
+                    locale: 'ja',
+                    fixedWeekCount: false,
+                    contentHeight: 'auto',
+                    aspectRatio: 1,
+                    headerToolbar: {
+                      left: '',
+                      center: 'title',
+                      right: 'prev,today,next',
+                    },
+                    buttonText: {
+                      today: '今月',
+                      month: '月',
+                    },
+                    eventSources: [
+                      {
+                        googleCalendarId:
+                          '791504e8a1801afd63e92f4b7a1d26ade8e2ac427a5d44c0914e6b19bcc291df@group.calendar.google.com',
+                        display: 'background',
+                        classNames: 'gcal-event',
+                      },
+                    ],
+
+                    dayCellContent: function (e) {
+                      e.dayNumberText = e.dayNumberText.replace('日', '');
+                    },
+                  });
+
+                  calendar.render();
+                });
+              </script>
+            </div>
+          {% endif %}
+
           <div class="menu-drawer__utility-links">
             {%- if shop.customer_accounts_enabled -%}
               <a
@@ -181,7 +250,12 @@
             <ul class="list list-social list-unstyled" role="list">
               {%- if settings.social_twitter_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_twitter_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-twitter' -%}
                     <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                   </a>
@@ -189,7 +263,12 @@
               {%- endif -%}
               {%- if settings.social_facebook_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_facebook_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_facebook_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-facebook' -%}
                     <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                   </a>
@@ -197,7 +276,12 @@
               {%- endif -%}
               {%- if settings.social_pinterest_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_pinterest_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-pinterest' -%}
                     <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
                   </a>
@@ -205,7 +289,12 @@
               {%- endif -%}
               {%- if settings.social_instagram_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_instagram_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_instagram_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-instagram' -%}
                     <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                   </a>
@@ -213,7 +302,12 @@
               {%- endif -%}
               {%- if settings.social_tiktok_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_tiktok_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_tiktok_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-tiktok' -%}
                     <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
                   </a>
@@ -221,7 +315,12 @@
               {%- endif -%}
               {%- if settings.social_tumblr_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_tumblr_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_tumblr_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-tumblr' -%}
                     <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                   </a>
@@ -229,7 +328,12 @@
               {%- endif -%}
               {%- if settings.social_snapchat_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_snapchat_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_snapchat_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-instagram' -%}
                     <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                   </a>
@@ -237,7 +341,12 @@
               {%- endif -%}
               {%- if settings.social_youtube_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_youtube_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_youtube_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-youtube' -%}
                     <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                   </a>
@@ -245,7 +354,12 @@
               {%- endif -%}
               {%- if settings.social_vimeo_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_vimeo_link }}" class="list-social__link link" rel="noopenner norefferer noindex" target="_blank">
+                  <a
+                    href="{{ settings.social_vimeo_link }}"
+                    class="list-social__link link"
+                    rel="noopenner norefferer noindex"
+                    target="_blank"
+                  >
                     {%- render 'icon-vimeo' -%}
                     <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                   </a>

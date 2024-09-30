@@ -25,7 +25,7 @@
   --campaign: #57b8d1;
   --chien: #f9f871;
   --important: #eb1c24;
-  --MainContent-padding-top: 3rem;
+  --main-content-padding-top: 3rem;
 }
 
 .product-card-wrapper .card,
@@ -569,7 +569,6 @@ hr {
   text-decoration: none;
   color: currentColor;
   display: block;
-  margin-left: -0.3rem;
 }
 
 .placeholder {
@@ -1999,6 +1998,7 @@ input[type='checkbox'] {
 }
 
 .quantity__input[type='number'] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -3595,10 +3595,6 @@ details-disclosure > details {
   }
 }
 
-.shopify-policy__container {
-  padding: 0 15px;
-}
-
 #content-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -3639,7 +3635,7 @@ details-disclosure > details {
   }
 }
 
-/* プライバシーポリシー */
+/* ポリシーページ */
 .shopify-policy__container {
   max-width: 72.6rem;
   padding: 0;
@@ -3648,6 +3644,14 @@ details-disclosure > details {
 
 .shopify-policy__title h1 {
   margin-top: 0;
+}
+
+.shopify-policy__body h2 {
+  margin-top: 3rem;
+}
+
+.shopify-policy__body p + h2 {
+  margin-top: 4.5rem;
 }
 
 @media only screen and (min-width: 750px) {
@@ -3659,6 +3663,7 @@ details-disclosure > details {
 @media only screen and (max-width: 749px) {
   .shopify-policy__title h1 {
     font-size: calc(var(--font-heading-scale) * 2rem);
-    margin-top: var(--MainContent-padding-top);
+    margin-top: var(--main-content-padding-top);
   }
 }
+

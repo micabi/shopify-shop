@@ -450,7 +450,23 @@
     "sidebar": {
       "name": "サイドバー",
       "settings": {
-        "label": "サイドバーに表示するメニューを選んでください。"
+        "brand-menu": {
+          "label": "サイドバーに表示するメニューを選んでください"
+        },
+        "category-menu": {
+          "label": "サイドバーに表示するメニューを選んでください"
+        },
+        "calendar": {
+          "label": "営業カレンダーを表示する",
+          "settings": {
+            "header": {
+              "content": "営業カレンダー"
+            },
+            "calendar-title": {
+              "label": "カレンダーの見出し"
+            }
+          }
+        }
       }
     },
     "announcement-bar": {
@@ -1048,6 +1064,15 @@
         "enable_customer_avatar": {
           "label": "アバターを表示",
           "info": "お客様はShopにログインしているときのみアバターを見ることができます"
+        },
+        "header__8": {
+          "content": "モバイルの営業カレンダー"
+        },
+        "mobile_calendar-title": {
+          "label": "モバイルカレンダーの見出し"
+        },
+        "mobile_calendar": {
+          "label": "ドロワーメニューに営業カレンダーを表示する"
         }
       }
     },

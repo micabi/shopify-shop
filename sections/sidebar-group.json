@@ -6,7 +6,8 @@
       "type": "sidebar",
       "settings": {
         "brand-menu": "brand-menu",
-        "category-menu": "category-menu"
+        "category-menu": "category-menu",
+        "calendar": true
       }
     }
   },

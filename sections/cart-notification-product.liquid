@@ -16,7 +16,23 @@
         {%- if settings.show_vendor -%}
           <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
         {%- endif -%}
-        <h3 class="cart-notification-product__name h4">{{ item.product.title | escape }}</h3>
+        <h3 class="cart-notification-product__name h4">
+          {%- if item.product.title contains '【天白】' -%}
+            {%- assign name = item.product.title | remove_first: '【天白】' -%}
+            {{- name | escape -}}
+          {%- elsif item.product.title contains '【栄】' -%}
+            {%- assign name = item.product.title | remove_first: '【栄】' -%}
+            {{- name | escape -}}
+          {%- elsif item.product.title contains '【名東】' -%}
+            {%- assign name = item.product.title | remove_first: '【名東】' -%}
+            {{- name | escape -}}
+          {%- elsif item.product.title contains '【名古屋】' -%}
+            {%- assign name = item.product.title | remove_first: '【名古屋】' -%}
+            {{- name | escape -}}
+          {%- else -%}
+            {{ item.product.title | escape }}
+          {%- endif -%}
+        </h3>
         <dl>
           {%- unless item.product.has_only_default_variant -%}
             {%- for option in item.options_with_values -%}

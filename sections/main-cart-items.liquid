@@ -17,6 +17,20 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  #cart {
+    margin-bottom: 6rem;
+  }
+
+  #haisosm {
+    position: relative;
+  }
+
+  #haisosm::before {
+    content: '最初にご希望の配達日時をご指定ください。';
+    display: block;
+    color: var(--important);
+  }
 {%- endstyle -%}
 
 {%- unless settings.cart_type == 'drawer' -%}
@@ -28,7 +42,7 @@
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="page-width">
     <div class="title-wrapper-with-link">
-      <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
+      <h1 class="title title--primary h2">{{ 'sections.cart.title' | t }}</h1>
       <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
         {{- 'general.continue_shopping' | t -}}
       </a>
@@ -282,6 +296,7 @@
                               href="{{ item.url_to_remove }}"
                               class="button button--tertiary"
                               aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                              onclick="CountItem()"
                             >
                               {% render 'icon-remove' %}
                             </a>
@@ -437,6 +452,10 @@
         </div>
       </div>
 
+      {% comment %} <div class="haisou__date">
+        <p>まずご希望の配送日時をご指定ください。</p>
+      </div> {% endcomment %}
+
       <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
       <p
         class="visually-hidden"
@@ -448,8 +467,36 @@
         {{ 'accessibility.loading' | t }}
       </p>
     </form>
-  </div>
+
+    <div id="haisosm"></div>
+
+  </div><!-- /.page-width -->
 </cart-items>
+
+<script src="{{ 'is_cart_empty.js' | asset_url }}" defer="defer"></script>
+<script>
+  function CountItem () {
+    const scheduled = document.querySelector( '#haisosm' );
+
+    if(scheduled === null) return;
+
+    const remove_btn = document.querySelectorAll( 'cart-remove-button' );
+
+    remove_btn.forEach( ( btn ) => {
+      //console.log( btn.dataset.index );
+      btn.addEventListener( 'click', ( e ) => {
+        let btn_length = document.querySelectorAll( 'cart-remove-button' ).length;
+        btn_length -= 1;
+
+        if(btn_length === 0) {
+          scheduled.style = 'display:none;'
+        }
+
+      }, { passive: true } );
+
+    } );
+  }
+</script>
 
 {% schema %}
 {

@@ -617,6 +617,10 @@
   margin-top: 1rem;
 }
 
+.card__heading a::first-letter {
+  margin-left: -0.5rem;
+}
+
 /* Card Shapes */
 
 .card--shape .card__content {

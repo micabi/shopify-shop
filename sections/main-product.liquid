@@ -30,6 +30,50 @@
     .product__sku::selection {
       background: purple;
     }
+    .item-rank {
+      margin-top: 3rem;
+    }
+    .item-rank table {
+      box-shadow: none;
+      border: 1px solid rgba(var(--color-foreground), 0.05);
+    }
+    .item-rank table caption {
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    .item-rank table tr th,
+    .item-rank table tr td {
+      font-weight: normal;
+      border: 1px solid rgba(var(--color-foreground), 0.05);
+    }
+    .rank_n {
+      color: #fff;
+      background: var(--rank-n);
+    }
+    .rank_s {
+      color: #fff;
+      background: var(--rank-s);
+    }
+    .rank_a {
+      color: #fff;
+      background: var(--rank-a);
+    }
+    .rank_ab {
+      color: #fff;
+      background: var(--rank-ab);
+    }
+    .rank_b {
+      color: #fff;
+      background: var(--rank-b);
+    }
+    .rank_c {
+      color: #fff;
+      background: var(--rank-c);
+    }
+    .rank_d {
+      color: #fff;
+      background: var(--rank-d);
+    }
 
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -45,7 +89,7 @@
 
     @media screen and (max-width: 749px) {
       .section-{{ section.id }}-padding {
-        padding-top: calc(var(--MainContent-padding-top) / 2);
+        padding-top: calc(var(--main-content-padding-top) / 2);
       }
     }
 
@@ -782,6 +826,49 @@
             {{ 'products.product.view_full_details' | t }}
             {% render 'icon-arrow' %}
           </a>
+
+          <div class="item-rank">
+            <table>
+              <caption>当店の商品ランク表記について</caption>
+              <thead class="hidden">
+                <tr>
+                  <th scope="cols">表記</th>
+                  <th scope="cols">状態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="rows" class="rank_n">N</th>
+                  <td>新品、未使用品</td>
+                </tr>
+                <tr>
+                  <th scope="rows" class="rank_s">S</th>
+                  <td>新品同様の中古品</td>
+                </tr>
+                <tr>
+                  <th scope="rows" class="rank_a">A</th>
+                  <td>極僅かな使用感や汚れ・傷はあるが、非常に状態の良い中古品</td>
+                </tr>
+                <tr>
+                  <th scope="rows" class="rank_ab">AB</th>
+                  <td>若干の傷や汚れはあるが、比較的状態の良い中古品</td>
+                </tr>
+                <tr>
+                  <th scope="rows" class="rank_b">B</th>
+                  <td>一般的な使用に伴う使用感や多少の汚れや傷はあるが、十分ご使用頂ける商品</td>
+                </tr>
+                <tr>
+                  <th scope="rows" class="rank_c">C</th>
+                  <td>目立つ傷や汚れ、使用には問題ない程度の損傷が見られる中古品</td>
+                </tr>
+                <tr>
+                  <th scope="rows" class="rank_d">D</th>
+                  <td>難アリ(ジャンク品)</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>商品画像は撮影環境やお使いのモニター環境により質感・色味が実物と異なってみえる場合がございます。 </p>
+          </div>
         </section>
         <!-- /.product__info-container -->
       </div>

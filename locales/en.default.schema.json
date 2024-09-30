@@ -514,7 +514,23 @@
     "sidebar": {
       "name": "Side Bar",
       "settings": {
-        "label": "Choice sidebar menu"
+        "brand-menu": {
+          "label": "Choice sidebar menu"
+        },
+        "category-menu": {
+          "label": "Choice sidebar menu"
+        },
+        "calendar": {
+          "label": "Show calendar",
+          "settings": {
+            "header": {
+              "content": "calendar"
+            },
+            "calendar-title": {
+              "label": "calendar heading"
+            }
+          }
+        }
       }
     },
     "apps": {
@@ -1204,6 +1220,15 @@
         "enable_customer_avatar": {
           "label": "Show avatar",
           "info": "Customers will only see their avatar when they're signed in with Shop"
+        },
+        "header__8": {
+          "content": "mobile calendar"
+        },
+        "mobile_calendar-title": {
+          "label": "mobile calendar heading"
+        },
+        "mobile_calendar": {
+          "label": "Show Mobile Calendar"
         }
       }
     },

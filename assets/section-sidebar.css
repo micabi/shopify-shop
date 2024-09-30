@@ -11,6 +11,7 @@
 
 .sidebar__inline-menu {
   padding-right: 20px;
+  margin-top: 2rem;
 }
 
 .sidebar__menu-item {
@@ -48,4 +49,8 @@
 .side-menu__list > li a.side-menu__link--active {
   transition: text-decoration-thickness var(--duration-short) ease;
   color: rgba(var(--ueda), 0.55);
+}
+
+.calendar {
+  margin-top: 3rem;
 }

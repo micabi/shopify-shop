@@ -469,7 +469,9 @@
 @media only screen and (max-width: 749px) {
   .policies li {
     display: block;
-    margin: 0 0 1.5rem;
+    /* margin: 0 0 1.5rem; */
+    margin: 0;
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
   }
 
   .policies + .copyright__content {

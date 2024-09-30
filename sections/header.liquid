@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+{% if section.settings.mobile_calendar %}
+  {{ 'fullcalendar.min.css' | asset_url | stylesheet_tag }}
+{% endif %}
 
 <style>
   header-drawer {
@@ -693,6 +696,20 @@
       ],
       "default": "center",
       "label": "t:sections.header.settings.mobile_logo_position.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__8.content",
+    },
+    {
+      "type": "text",
+      "id": "mobile_calendar-title",
+      "label": "t:sections.header.settings.mobile_calendar-title.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_calendar",
+      "label": "t:sections.header.settings.mobile_calendar.label"
     },
     {
       "type": "header",

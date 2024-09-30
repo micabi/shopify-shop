@@ -1,0 +1,17 @@
+{
+  "name": "shopify",
+  "version": "1.0.0",
+  "description": "## cli ver3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx shopify theme dev",
+    "pull": "npx shopify theme pull",
+    "push": "npx shopify theme push"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "shopify": "^3.67.1"
+  }
+}
