@@ -3,6 +3,7 @@
     "main": {
       "type": "main-page",
       "custom_css": [
+
       ],
       "settings": {
         "padding_top": 0,
