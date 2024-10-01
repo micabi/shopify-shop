@@ -2,6 +2,9 @@
 {% if page.handle == 'company' %}
 {{ 'main-company.css' | asset_url | stylesheet_tag }}
 {% endif %}
+{% if page.handle == 'loan' %}
+  {{ 'main-loan.css' | asset_url | stylesheet_tag }}
+  {% endif %}
 
 
 {%- style -%}
