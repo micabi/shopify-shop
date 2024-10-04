@@ -36,8 +36,8 @@
 
 .mega-menu__list {
   display: grid;
-  gap: 1.8rem 3.5rem;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem 3rem;
+  grid-template-columns: repeat(6, minmax(0, auto));
   list-style: none;
 }
 
@@ -94,9 +94,13 @@
 }
 
 .mega-menu .mega-menu__list--condensed {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, auto));
+  gap: 1.5rem 3rem;
+  list-style-type: none;
 }
 
 .mega-menu__list--condensed .mega-menu__link {

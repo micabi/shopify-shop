@@ -7,6 +7,13 @@
 
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
+
+      {% comment %} {%- for collection in collections -%} {% endcomment %}
+        {% comment %} {{ collection | json }} {% endcomment %}
+        {% comment %} {{ collection.products_count | json }} {% endcomment %}
+      {% comment %} {%- endfor -%} {% endcomment %}
+
+
     {%- for link in section.settings.menu.links -%}
       <li>
         {%- if link.links != blank -%}
@@ -45,6 +52,14 @@
                         {% endif %}
                       >
                         {{ childlink.title | escape }}
+                        {%- assign childname = childlink.title -%}
+                        {%- for collection in collections -%}
+                          {%- if childname == collection.title -%}
+                            ({{ collection.products_count }})
+                          {%- elsif collection.title == 'その他カテゴリー' and childname == 'その他' -%}
+                            ({{ collection.products_count }})
+                          {%- endif -%}
+                        {%- endfor -%}
                       </a>
                       {%- if childlink.links != blank -%}
                         <ul class="list-unstyled" role="list">
@@ -59,6 +74,14 @@
                                 {% endif %}
                               >
                                 {{ grandchildlink.title | escape }}
+                                {%- assign grandchildname = grandchildlink.title -%}
+                                {%- for collection in collections -%}
+                                  {%- if grandchildname == collection.title -%}
+                                    ({{ collection.products_count }})
+                                  {%- elsif collection.title == 'その他(その他)' and grandchildname == 'その他' -%}
+                                    ({{ collection.products_count }})
+                                  {%- endif -%}
+                                {%- endfor -%}
                               </a>
                             </li>
                           {%- endfor -%}

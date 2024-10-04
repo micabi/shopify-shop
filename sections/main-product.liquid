@@ -137,7 +137,7 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
 
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}{% comment %}product--no-media{% endcomment %} {% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -192,8 +192,13 @@
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   {% if product.title contains '【天白】' %}
-                    {% assign name = product.title | remove_first: '【天白】' -%}
-                    <h1>{{ name | escape }}</h1>
+                    {%- assign name = product.title | remove_first: '【天白】' -%}
+                    {%- assign firstletter = name | slice: 0 -%}
+                    {%- if firstletter == '【' -%}
+                      <h1 class="indent">{{ name | escape }}</h1>
+                    {%- else -%}
+                      <h1>{{ name | escape }}</h1>
+                    {%- endif -%}
                     <a href="{{ product.url }}" class="product__title">
                       <h2 class="h1">
                         {{ name | escape }}
@@ -203,7 +208,12 @@
 
                   {% if product.title contains '【栄】' %}
                     {% assign name = product.title | remove_first: '【栄】' -%}
-                    <h1>{{ name | escape }}</h1>
+                    {%- assign firstletter = name | slice: 0 -%}
+                    {%- if firstletter == '【' -%}
+                      <h1 class="indent">{{ name | escape }}</h1>
+                    {%- else -%}
+                      <h1>{{ name | escape }}</h1>
+                    {%- endif -%}
                     <a href="{{ product.url }}" class="product__title">
                       <h2 class="h1">
                         {{ name | escape }}
@@ -213,7 +223,12 @@
 
                   {% if product.title contains '【名東】' %}
                     {% assign name = product.title | remove_first: '【名東】' -%}
-                    <h1>{{ name | escape }}</h1>
+                    {%- assign firstletter = name | slice: 0 -%}
+                    {%- if firstletter == '【' -%}
+                      <h1 class="indent">{{ name | escape }}</h1>
+                    {%- else -%}
+                      <h1>{{ name | escape }}</h1>
+                    {%- endif -%}
                     <a href="{{ product.url }}" class="product__title">
                       <h2 class="h1">
                         {{ name | escape }}
@@ -223,7 +238,12 @@
 
                   {% if product.title contains '【名古屋】' %}
                     {% assign name = product.title | remove_first: '【名古屋】' -%}
-                    <h1>{{ name | escape }}</h1>
+                    {%- assign firstletter = name | slice: 0 -%}
+                    {%- if firstletter == '【' -%}
+                      <h1 class="indent">{{ name | escape }}</h1>
+                    {%- else -%}
+                      <h1>{{ name | escape }}</h1>
+                    {%- endif -%}
                     <a href="{{ product.url }}" class="product__title">
                       <h2 class="h1">
                         {{ name | escape }}
@@ -829,7 +849,9 @@
 
           <div class="item-rank">
             <table>
-              <caption>当店の商品ランク表記について</caption>
+              <caption>
+                当店の商品ランク表記について
+              </caption>
               <thead class="hidden">
                 <tr>
                   <th scope="cols">表記</th>
@@ -867,7 +889,7 @@
                 </tr>
               </tbody>
             </table>
-            <p>商品画像は撮影環境やお使いのモニター環境により質感・色味が実物と異なってみえる場合がございます。 </p>
+            <p>商品画像は撮影環境やお使いのモニター環境により質感・色味が実物と異なってみえる場合がございます。</p>
           </div>
         </section>
         <!-- /.product__info-container -->

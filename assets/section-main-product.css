@@ -324,7 +324,7 @@ a.product__text {
   font-size: 24px;
 }
 
-.product__title > h1::first-letter {
+.product__title > h1.indent::first-letter {
   margin-left: -1.3rem;
 }
 
