@@ -74,6 +74,12 @@
                                     {% endif %}
                                   >
                                     {{ childlink.title | escape }}
+                                    {%- for collection in collections -%}
+                                      {%- assign childname = childlink.title -%}
+                                      {%- if collection.title == childname -%}
+                                        ({{ collection.products_count }})
+                                      {%- endif -%}
+                                    {%- endfor -%}
                                   </a>
                                 {%- else -%}
                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
@@ -82,6 +88,14 @@
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
                                       {{ childlink.title | escape }}
+                                      {%- for collection in collections -%}
+                                        {%- assign childname = childlink.title -%}
+                                        {%- if collection.title == childname -%}
+                                          ({{ collection.products_count }})
+                                        {%- elsif childname == 'その他' and collection.title == 'その他カテゴリー' -%}
+                                          ({{ collection.products_count }})
+                                        {%- endif -%}
+                                      {%- endfor -%}
                                       {% render 'icon-arrow' %}
                                       {% render 'icon-caret' %}
                                     </summary>
@@ -95,6 +109,12 @@
                                       >
                                         {% render 'icon-arrow' %}
                                         {{ childlink.title | escape }}
+                                        {%- for collection in collections -%}
+                                          {%- assign childname = childlink.title -%}
+                                          {%- if collection.title == childname -%}
+                                            ({{ collection.products_count }})
+                                          {%- endif -%}
+                                        {%- endfor -%}
                                       </button>
                                       <ul
                                         class="menu-drawer__menu list-menu"
@@ -112,6 +132,15 @@
                                               {% endif %}
                                             >
                                               {{ grandchildlink.title | escape }}
+                                              {%- for collection in collections -%}
+                                                {%- assign grandchildname = grandchildlink.title -%}
+                                                {%- if collection.title == grandchildname -%}
+                                                  ({{ collection.products_count }})
+                                                {% elsif grandchildname == 'その他' and collection.title == 'その他(その他)' %}
+                                                  ({{ collection.products_count }})
+                                                {%- endif -%}
+                                              {%- endfor -%}
+                                              {% comment %} {% render 'icon-arrow' %} {% endcomment %}
                                             </a>
                                           </li>
                                         {%- endfor -%}
