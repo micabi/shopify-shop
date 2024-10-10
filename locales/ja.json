@@ -196,8 +196,8 @@
       },
       "max_price": "最高価格は{{ price }}です",
       "product_count": {
-        "one": "{{ count }}個の商品の{{ product_count }}",
-        "other": "{{ count }}個の商品の{{ product_count }}"
+        "one": "{{ count }}個のうち{{ product_count }}個",
+        "other": "{{ count }}個のうち{{ product_count }}個"
       },
       "product_count_simple": {
         "one": "{{ count }}個の商品",
