@@ -30,50 +30,6 @@
     .product__sku::selection {
       background: purple;
     }
-    .item-rank {
-      margin-top: 3rem;
-    }
-    .item-rank table {
-      box-shadow: none;
-      border: 1px solid rgba(var(--color-foreground), 0.05);
-    }
-    .item-rank table caption {
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-    .item-rank table tr th,
-    .item-rank table tr td {
-      font-weight: normal;
-      border: 1px solid rgba(var(--color-foreground), 0.05);
-    }
-    .rank_n {
-      color: #fff;
-      background: var(--rank-n);
-    }
-    .rank_s {
-      color: #fff;
-      background: var(--rank-s);
-    }
-    .rank_a {
-      color: #fff;
-      background: var(--rank-a);
-    }
-    .rank_ab {
-      color: #fff;
-      background: var(--rank-ab);
-    }
-    .rank_b {
-      color: #fff;
-      background: var(--rank-b);
-    }
-    .rank_c {
-      color: #fff;
-      background: var(--rank-c);
-    }
-    .rank_d {
-      color: #fff;
-      background: var(--rank-d);
-    }
 
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -158,36 +114,72 @@
                 {% render block %}
 
               {%- when 'text' -%}
-                <p
-                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
-                  {% if block.settings.text == 'N' %}
-                    <span class="rank rank_n">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == 'S' %}
-                    <span class="rank rank_s">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == 'A' %}
-                    <span class="rank rank_a">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == 'AB' %}
-                    <span class="rank rank_ab">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == 'B' %}
-                    <span class="rank rank_b">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == 'C' %}
-                    <span class="rank rank_c">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == 'D' %}
-                    <span class="rank rank_d">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == '天白本店' %}
+                {% if block.settings.text == 'N'
+                  or block.settings.text == 'S'
+                  or block.settings.text == 'A'
+                  or block.settings.text == 'AB'
+                  or block.settings.text == 'B'
+                  or block.settings.text == 'C'
+                  or block.settings.text == 'D'
+                %}
+                  {% comment %} <span class="rank rank_n">{{- block.settings.text -}}</span> {% endcomment %}
+                  {%- render 'product-item-rank', rank: block.settings.text -%}
+                  {% comment %}
+                    {% elsif block.settings.text == 'S' %}
+                      {% comment %} <span class="rank rank_s">{{- block.settings.text -}}</span> {% endcomment %}
+                      {%- render 'test', rank: block.settings.text -%}
+                    {% elsif block.settings.text == 'A' %}
+                      {% comment %} <span class="rank rank_a">{{- block.settings.text -}}</span> {% endcomment %}
+                      {%- render 'test', rank: block.settings.text -%}
+                    {% elsif block.settings.text == 'AB' %}
+                      {% comment %} <span class="rank rank_ab">{{- block.settings.text -}}</span> {% endcomment %}
+                      {%- render 'test', rank: block.settings.text -%}
+                    {% elsif block.settings.text == 'B' %}
+                      {% comment %} <span class="rank rank_b">{{- block.settings.text -}}</span> {% endcomment %}
+                      {%- render 'test', rank: block.settings.text -%}
+                    {% elsif block.settings.text == 'C' %}
+                      {% comment %} <span class="rank rank_c">{{- block.settings.text -}}</span> {% endcomment %}
+                      {%- render 'test', rank: block.settings.text -%}
+                    {% elsif block.settings.text == 'D' %}
+                      {% comment %} <span class="rank rank_d">{{- block.settings.text -}}</span> {% endcomment %}
+                      {%- render 'test', rank: block.settings.text -%}
+                  {% endcomment %}
+                {% elsif block.settings.text == '天白本店' %}
+                  <p
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
                     <span class="shop shop_tempaku">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == '栄店' %}
+                  </p>
+                {% elsif block.settings.text == '栄店' %}
+                  <p
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
                     <span class="shop shop_sakae">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == '名東店' %}
+                  </p>
+                {% elsif block.settings.text == '名東店' %}
+                  <p
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
                     <span class="shop shop_meito">{{- block.settings.text -}}</span>
-                  {% elsif block.settings.text == '名古屋駅前店' %}
+                  </p>
+                {% elsif block.settings.text == '名古屋駅前店' %}
+                  <p
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
                     <span class="shop shop_meieki">{{- block.settings.text -}}</span>
-                  {% else %}
+                  </p>
+                {% else %}
+                  <p
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
                     {{- block.settings.text -}}
-                  {% endif %}
-                </p>
+                  </p>
+                {% endif %}
 
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
@@ -654,6 +646,16 @@
                   show_pickup_availability: true
                 -%}
 
+              {%- when 'product_ranks' -%}
+                {%- if block.settings.show_product_ranks -%}
+                  {% render 'product-ranks' %}
+                {%- endif -%}
+
+              {%- when 'product_contact_form' -%}
+                {%- if block.settings.show_product_contact_form -%}
+                  {%- render 'product-contact-form' -%}
+                {%- endif -%}
+
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -846,51 +848,6 @@
             {{ 'products.product.view_full_details' | t }}
             {% render 'icon-arrow' %}
           </a>
-
-          <div class="item-rank">
-            <table>
-              <caption>
-                当店の商品ランク表記について
-              </caption>
-              <thead class="hidden">
-                <tr>
-                  <th scope="cols">表記</th>
-                  <th scope="cols">状態</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="rows" class="rank_n">N</th>
-                  <td>新品、未使用品</td>
-                </tr>
-                <tr>
-                  <th scope="rows" class="rank_s">S</th>
-                  <td>新品同様の中古品</td>
-                </tr>
-                <tr>
-                  <th scope="rows" class="rank_a">A</th>
-                  <td>極僅かな使用感や汚れ・傷はあるが、非常に状態の良い中古品</td>
-                </tr>
-                <tr>
-                  <th scope="rows" class="rank_ab">AB</th>
-                  <td>若干の傷や汚れはあるが、比較的状態の良い中古品</td>
-                </tr>
-                <tr>
-                  <th scope="rows" class="rank_b">B</th>
-                  <td>一般的な使用に伴う使用感や多少の汚れや傷はあるが、十分ご使用頂ける商品</td>
-                </tr>
-                <tr>
-                  <th scope="rows" class="rank_c">C</th>
-                  <td>目立つ傷や汚れ、使用には問題ない程度の損傷が見られる中古品</td>
-                </tr>
-                <tr>
-                  <th scope="rows" class="rank_d">D</th>
-                  <td>難アリ(ジャンク品)</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>商品画像は撮影環境やお使いのモニター環境により質感・色味が実物と異なってみえる場合がございます。</p>
-          </div>
         </section>
         <!-- /.product__info-container -->
       </div>
@@ -904,13 +861,19 @@
           {%- when 'description' -%}
             {%- if product.description != blank -%}
               <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                {{- product.description -}}
+                <div class="specExp">
+                  {{- product.description -}}
+                </div>
+                <!-- /.specExp -->
               </div>
             {%- endif -%}
         {%- endcase -%}
       {%- endfor -%}
     </div>
     <!-- /.description -->
+    {% if product.description != '' %}
+      <script src="{{ 'description.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
 
     {% render 'product-media-modal', variant_images: variant_images %}
 
@@ -1066,6 +1029,38 @@
           ],
           "default": "body",
           "label": "t:sections.main-product.blocks.sku.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "product_contact_form",
+      "name": "商品お問い合わせフォーム",
+      "settings": [
+        {
+          "type": "header",
+          "content": "商品お問い合わせフォームの表示"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_contact_form",
+          "label": "表示する",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "product_ranks",
+      "name": "商品ランク",
+      "settings": [
+        {
+          "type": "header",
+          "content": "商品状態ランク表の表示"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_ranks",
+          "label": "表示する",
+          "default": true
         }
       ]
     },

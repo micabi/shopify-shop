@@ -54,6 +54,7 @@
                         {{ childlink.title | escape }}
                         {%- assign childname = childlink.title -%}
                         {%- for collection in collections -%}
+                          {% comment %} {{collection.title }} {% endcomment %}
                           {%- if childname == collection.title -%}
                             ({{ collection.products_count }})
                           {%- elsif collection.title == 'その他カテゴリー' and childname == 'その他' -%}
@@ -78,7 +79,7 @@
                                 {%- for collection in collections -%}
                                   {%- if grandchildname == collection.title -%}
                                     ({{ collection.products_count }})
-                                  {%- elsif collection.title == 'その他(その他)' and grandchildname == 'その他' -%}
+                                  {%- elsif collection.title == '雑貨(その他)' and grandchildname == 'その他' -%}
                                     ({{ collection.products_count }})
                                   {%- endif -%}
                                 {%- endfor -%}

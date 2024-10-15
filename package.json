@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "shopify": "^3.67.1"
+    "shopify": "^3.68.1"
   }
 }

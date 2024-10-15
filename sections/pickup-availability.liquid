@@ -20,17 +20,18 @@
           }}
         </p>
         <p class="caption">{{ closest_location.pick_up_time }}</p>
-        <button
+        {% comment %} <button
           id="ShowPickupAvailabilityDrawer"
           class="pickup-availability-button link link--text underlined-link"
           aria-haspopup="dialog"
         >
+
           {%- if pick_up_availabilities.size == 1 -%}
             {{ 'products.product.pickup_availability.view_store_info' | t }}
           {%- else -%}
             {{ 'products.product.pickup_availability.check_other_stores' | t }}
           {%- endif -%}
-        </button>
+        </button> {% endcomment %}
       {%- else -%}
         <p class="caption-large">
           {{
@@ -39,13 +40,13 @@
           }}
         </p>
         {%- if pick_up_availabilities.size > 1 -%}
-          <button
+          {% comment %} <button
             id="ShowPickupAvailabilityDrawer"
             class="pickup-availability-button link link--text underlined-link"
             aria-haspopup="dialog"
           >
             {{ 'products.product.pickup_availability.check_other_stores' | t }}
-          </button>
+          </button> {% endcomment %}
         {%- endif -%}
       {%- endif -%}
     </div>

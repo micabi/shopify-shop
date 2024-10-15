@@ -225,6 +225,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   border: 0;
   clip: rect(0 0 0 0);
   word-wrap: normal !important;
+  user-select: none;
 }
 
 .visually-hidden--inline {

@@ -1,0 +1,116 @@
+{% comment %} 商品ページに表示するその商品の状態ランク {% endcomment %}
+
+{%- style -%}
+  .item-rank {
+    margin-top: 3rem;
+  }
+  .item-rank table {
+    box-shadow: none;
+    border: 1px solid rgba(var(--color-foreground), 0.05);
+    color: rgba(var(--color-foreground), 0.3);
+  }
+  .item-rank table caption {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--color-foreground));
+  }
+  .item-rank table tr th,
+  .item-rank table tr td {
+    font-weight: normal;
+    border: 1px solid rgba(var(--color-foreground), 0.05);
+  }
+  .rank_n {
+    color: #fff;
+    background: var(--rank-n);
+  }
+  .rank_n + td {
+    color: rgb(var(--color-foreground));
+  }
+  .rank_s {
+    color: #fff;
+    background: var(--rank-s);
+  }
+  .rank_s + td {
+    color: rgb(var(--color-foreground));
+  }
+  .rank_a {
+    color: #fff;
+    background: var(--rank-a);
+  }
+  .rank_a + td {
+    color: rgb(var(--color-foreground));
+  }
+  .rank_ab {
+    color: #fff;
+    background: var(--rank-ab);
+  }
+  .rank_ab + td {
+    color: rgb(var(--color-foreground));
+  }
+  .rank_b {
+    color: #fff;
+    background: var(--rank-b);
+  }
+  .rank_b + td {
+    color: rgb(var(--color-foreground));
+  }
+  .rank_c {
+    color: #fff;
+    background: var(--rank-c);
+  }
+  .rank_c + td {
+    color: rgb(var(--color-foreground));
+  }
+  .rank_d {
+    color: #fff;
+    background: var(--rank-d);
+  }
+  .rank_d + td {
+    color: rgb(var(--color-foreground));
+  }
+{%- endstyle -%}
+{%- assign item_rank = rank -%}
+<div class="item-rank">
+  <table>
+    <caption>
+      商品の状態
+    </caption>
+    <thead class="hidden">
+      <tr>
+        <th scope="cols">表記</th>
+        <th scope="cols">状態</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'N' -%}class="rank_n"{%- endif -%}>N</th>
+        <td>新品、未使用品</td>
+      </tr>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'S' -%}class="rank_s"{%- endif -%}>S</th>
+        <td>新品同様の中古品</td>
+      </tr>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'A' -%}class="rank_a"{%- endif -%}>A</th>
+        <td>極僅かな使用感や汚れ・傷はあるが、非常に状態の良い中古品</td>
+      </tr>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'AB' -%}class="rank_ab"{%- endif -%}>AB</th>
+        <td>若干の傷や汚れはあるが、比較的状態の良い中古品</td>
+      </tr>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'B' -%}class="rank_b"{%- endif -%}>B</th>
+        <td>一般的な使用に伴う使用感や多少の汚れや傷はあるが、十分ご使用頂ける商品</td>
+      </tr>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'C' -%}class="rank_c"{%- endif -%}>C</th>
+        <td>目立つ傷や汚れ、使用には問題ない程度の損傷が見られる中古品</td>
+      </tr>
+      <tr>
+        <th scope="rows" {%- if item_rank == 'D' -%}class="rank_d"{%- endif -%}>D</th>
+        <td>難アリ(ジャンク品)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>商品画像は撮影環境やお使いのモニター環境により質感・色味が実物と異なってみえる場合がございます。</p>
+</div>

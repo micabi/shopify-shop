@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -79,6 +88,11 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "product_contact_form_8naqMg": {
+          "type": "product_contact_form",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -93,7 +107,8 @@
         "share",
         "text_shop",
         "text_rank",
-        "buy_buttons"
+        "buy_buttons",
+        "product_contact_form_8naqMg"
       ],
       "settings": {
         "enable_sticky_info": true,
