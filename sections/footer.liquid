@@ -315,7 +315,7 @@
         {%- endif -%}
       </div>
 
-      <div class="footer__column footer__column--info">
+      {% comment %} <div class="footer__column footer__column--info">
         {%- if section.settings.payment_enable -%}
           <div class="footer__payment">
             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
@@ -328,7 +328,7 @@
             </ul>
           </div>
         {%- endif -%}
-      </div>
+      </div> {% endcomment %}
     </div>
 
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">

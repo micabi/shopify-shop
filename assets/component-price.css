@@ -25,6 +25,26 @@
   font-size: 1.8rem;
 }
 
+.price .price-item.divided {
+  color: #4d7840;
+  font-weight: bold;
+  display: block;
+}
+
+@media screen and (width < 450px) {
+  .price .price-item.divided {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (width >= 450px) {
+  .price .price-item.divided {
+    font-size: 0.6vw;
+  }
+}
+
+
+
 /* product page */
 .product__info-container .price .price-item {
   font-size: 3.4rem;

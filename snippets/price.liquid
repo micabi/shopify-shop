@@ -85,11 +85,14 @@
           </span>
         {%- else -%}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+          {%- render 'card-product-loan_price', category: category, price: product.price -%}
           <span class="price-item price-item--regular">
             {{ money_price }}&nbsp;<span class="tax"> (税込み)</span>
-            {% comment %} {%- assign notax = price | times : 0.1 -%}
-            {%- assign multiplication = notax | times : 1.1 | round -%}
-            {{ multiplication }} {% endcomment %}
+            {% comment %}
+              {%- assign notax = price | times : 0.1 -%}
+              {%- assign multiplication = notax | times : 1.1 | round -%}
+              {{ multiplication }}
+            {% endcomment %}
           </span>
         {%- endif -%}
       </div>

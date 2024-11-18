@@ -130,11 +130,13 @@
             <div class="title-wrapper center">
               <h2 class="title title--primary">
                 {{ 'sections.collection_template.empty' | t -}}
-                {% comment %} <br>
-                {{
-                  'sections.collection_template.use_fewer_filters_html'
-                  | t: link: collection.url, class: 'underlined-link link'
-                }} {% endcomment %}
+                {% comment %}
+                  <br>
+                  {{
+                    'sections.collection_template.use_fewer_filters_html'
+                    | t: link: collection.url, class: 'underlined-link link'
+                  }}
+                {% endcomment %}
               </h2>
             </div>
           </div>
@@ -189,6 +191,71 @@
 
             {%- if paginate.pages > 1 -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
+            {%- endif -%}
+
+            {%- assign collection_name = collection.handle -%}
+
+            {%-
+              if collection_name == 'rolex' or
+              collection_name == 'rolex-daytona' or
+              collection_name == 'rolex-gmt' or
+              collection_name == 'rolex-yachtmaster' or
+              collection_name == 'rolex-oyster' or
+              collection_name == 'rolex-milgauss' or
+              collection_name == 'rolex-datejust' or
+              collection_name == 'rolex-airking' or
+              collection_name == 'rolex-explorer' or
+              collection_name == 'rolex-submariner' or
+              collection_name == 'rolex-seadweller' or
+              collection_name == 'rolex-skydweller' or
+              collection_name == 'rolex-cellini' or
+              collection_name == 'rolex-daydate'
+            -%}
+              <article class="collection-models">
+                {% render 'rolex-models' %}
+              </article>
+            {%- endif -%}
+
+            {%-
+              if collection_name == 'omega' or
+              collection_name == 'omega-speedmaster' or
+              collection_name == 'omega-seamaster' or
+              collection_name == 'omega-constellation' or
+              collection_name == 'omega-swatch'
+            -%}
+              <article class="collection-models">
+                {% render 'omega-models' %}
+              </article>
+            {%- endif -%}
+
+            {%-
+              if collection_name == 'hermes' or
+              collection_name == 'hermes-birkin' or
+              collection_name == 'hermes-kelly' or
+              collection_name == 'hermes-bolide' or
+              collection_name == 'hermes-gardenparty' or
+              collection_name == 'hermes-evelyne' or
+              collection_name == 'hermes-picotin' or
+              collection_name == 'hermes-intheloop' or
+              collection_name == 'hermes-constance' or
+              collection_name == 'hermes-geta'
+            -%}
+              <article class="collection-models">
+                {% render 'hermes-models' %}
+              </article>
+              <article class="collection-models">
+                {% render 'hermes-motif' %}
+              </article>
+            {%- endif -%}
+
+            {%-
+              if collection_name == 'hermes-chainedancre' or
+              collection_name == 'hermes-scarf' or
+              collection_name == 'hermes-h'
+              -%}
+              <article class="collection-models">
+                {% render 'hermes-motif' %}
+              </article>
             {%- endif -%}
           </div>
         {%- endif -%}

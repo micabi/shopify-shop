@@ -27,31 +27,43 @@
   {%- endif -%}
 
   {%- style -%}
-    .product__sku::selection {
-      background: purple;
-    }
-
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    }
-
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
+      .product__sku::selection {
+        background: purple;
       }
-    }
 
-    @media screen and (max-width: 749px) {
       .section-{{ section.id }}-padding {
-        padding-top: calc(var(--main-content-padding-top) / 2);
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
       }
-    }
 
-    .description {
-      margin-top: 2rem;
-    }
+      @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+      }
+
+      @media screen and (max-width: 749px) {
+        .section-{{ section.id }}-padding {
+          padding-top: calc(var(--main-content-padding-top) / 2);
+        }
+      }
+
+      .description {
+        margin-top: 2rem;
+      }
+
+      .description .card_caution {
+        font-size: 1.2rem;
+        border: 1px solid rgba(var(--color-foreground), 0.2);
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        padding: 0 15px;
+      }
+
+      .description .card_caution span {
+        color: #ff5362;
+      }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -254,12 +266,14 @@
                 </div>
 
               {%- when 'price' -%}
+                {%- assign product_category = product.metafields.custom.category | escape -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
                     product: product,
                     use_variant: true,
                     show_badges: false,
-                    price_class: 'price--large'
+                    price_class: 'price--large',
+                    category: product_category
                   -%}
                 </div>
 
@@ -859,6 +873,15 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'description' -%}
+            <div class="card_caution">
+              <p>
+                2018年6月に改正割賦販売法が施行されたことにともない、
+                当店ではクレジットカードでのお支払いに際し、カードにご登録のお客様情報(お名前・ご住所など)とご注文者様のお客様情報が異なるご注文はお受けいたしかねます(配偶者・親子・会社名義のカードも含みます)。
+                <span>ご注文者様情報の内容と一致したカードをご利用くださいますようお願い申し上げます。</span>
+                また、高額商品のご注文におきましてシステム上自動的にクレジットカード以外のお支払方法をご案内させていただく場合がございます。ご理解いただきますよう、なにとぞお願い申し上げます。
+              </p>
+            </div>
+            <!-- /.card_caution -->
             {%- if product.description != blank -%}
               <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                 <div class="specExp">

@@ -23,6 +23,14 @@ product-info {
   padding-left: 0;
 }
 
+.product__info-container .price .price-item.divided {
+  font-size: 1.4rem;
+}
+
+.product__info-container .price .price-item.divided span {
+  font-size: 2.4rem;
+}
+
 @media screen and (min-width: 750px) {
   .product__column-sticky {
     display: block;
