@@ -1,0 +1,235 @@
+{% style %}
+@media screen and (width >= 450px) {
+  .collection-models__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .collection-models__header h2 {
+    margin: 0 0 3rem;
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a:hover,
+  .collection-models__header a:focus {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (width < 450px) {
+  .collection-models__header span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+  .collection-models {
+    background: rgba(var(--color-foreground), 0.03);
+    padding: 15px;
+    margin-top: 3rem;
+  }
+
+
+  @media screen and (width >= 450px) {
+    .models {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem 20px;
+    }
+  }
+
+  @media screen and (width < 450px) {
+    .collection-models h2 {
+      text-align: center;
+    }
+
+    .model {
+      padding: 10px;
+    }
+
+    .model + .model {
+      margin-top: 3rem;
+    }
+  }
+
+  .model {
+    box-shadow: var(--focused-base-box-shadow);
+  }
+
+  .model h3 {
+    text-align: center;
+  }
+
+  .model img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .model p {
+    padding: 0 15px;
+  }
+{% endstyle %}
+{%- assign name = collection.handle -%}
+<div class="collection-models__header">
+<h2>{%- if name != 'rolex' -%}その他の{%- endif -%}ロレックスの{%- if name == 'rolex' -%}おすすめ{%- endif -%}モデル</h2>
+<span>{%- if name != 'rolex' -%}<a href="/collections/rolex">ロレックスの一覧にもどる</a>{%- endif -%}</span>
+</div><!-- /.models__header -->
+<div class="models">
+  <div class="model">
+    <h3>ロレックス GMTマスター</h3>
+    <a href="/collections/rolex-gmt">
+      <img src="{{ 'mrx_gmt.png' | asset_url }}" alt="ロレックス GMTマスター" width="240" height="100">
+    </a>
+    <p>
+      出発地と目的地の２つの時間を一度に確認できることから世界中を飛び回るビジネスマンやスポーツ選手に人気です。赤青ベゼルを代表とするツートンカラーベゼルもスポーティさを引き立てます。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス エアキング</h3>
+    <a href="/collections/rolex-airking">
+      <img src="{{ 'mrx_airking.png' | asset_url }}" alt="ロレックス エアキング" width="240" height="100">
+    </a>
+    <p>
+      機能を絞ったシンプルさ、細身の方にマッチする小ぶりなサイズ感、リーズナブルさ。日常生活に使いやすいロレックスのエントリーモデル。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス エクスプローラー</h3>
+    <a href="/collections/rolex-explorer">
+      <img src="{{ 'mrx_explorer.png' | asset_url }}" alt="ロレックス エクスプローラー" width="240" height="100">
+    </a>
+    <p>
+      高い視認性があり実用を重視した時計です。
+      Ⅰは1953年にエベレスト登頂の公式スポンサーとなりました。Ⅱでは、日付機能、24時間計とリューズガードが追加されたことで
+      機能面・耐久性が向上しました。外見もシンプルなためビジネスマンにおすすめなモデルです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス オイスター</h3>
+    <a href="/collections/rolex-oyster">
+      <img src="{{ 'mrx_oyster.png' | asset_url }}" alt="ロレックス オイスター" width="240" height="100">
+    </a>
+    <p>
+      機能を絞ったシンプルさ、選べるサイズの多さ、リーズナブルさ。オン・オフとも使えるロレックスのスタンダードモデル。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス サブマリーナ</h3>
+    <a href="/collections/rolex-submariner">
+      <img src="{{ 'mrx_submariner.png' | asset_url }}" alt="ロレックス サブマリーナ" width="240" height="100">
+    </a>
+    <p>
+      本格的なスポーツウォッチでありながら、ビジネスシーンでも違和感なく身につけられるシンプルなデザインが人気のサブマリーナ。
+      300mという高い防水性能を誇るプロ仕様の安心感があるからマリンスポーツやフィッシング、営業マンや屋外で仕事をする方にも高い支持を得ています。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス シードゥエラー</h3>
+    <a href="/collections/rolex-seadweller">
+      <img src="{{ 'mrx_seadweller.png' | asset_url }}" alt="ロレックス シードゥエラー" width="240" height="100">
+    </a>
+    <p>
+      サブマリーナより大幅に防水性を高めた本格的ダイバーズウォッチ。ケース径、ケース厚も極太。男らしさを強調してくれます。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス スカイドゥエラー</h3>
+    <a href="/collections/rolex-skydweller">
+      <img src="{{ 'mrx_skydweller.png' | asset_url }}" alt="ロレックス スカイドゥエラー" width="240" height="100">
+    </a>
+    <p>
+      高い防水性・防塵性はそのままに、第二時間帯が分かるGMT機能、年に一度の修正でOKという年次カレンダー機能と実用性を兼ね備えたロレックスらしさのつまった複雑時計です。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス チェリーニ</h3>
+    <a href="/collections/rolex-cellini">
+      <img src="{{ 'mrx_cellini.png' | asset_url }}" alt="ロレックス チェリーニ" width="240" height="100">
+    </a>
+    <p>
+      オイスター(高い防水性)、パーペチュアル(自動巻き)、高い耐久性という一般的イメージとは異なるロレックスのドレスライン。他人とは違ったロレックスをお探しの方におすすめです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス デイトジャスト</h3>
+    <a href="/collections/rolex-datejust">
+      <img src="{{ 'mrx_datejust.png' | asset_url }}" alt="ロレックス デイトジャスト" width="240" height="100">
+    </a>
+    <p>
+      オイスター(防水性)・パーペチュアル(自動巻)・デイトジャスト(日付表示)というロレックス3大発明が詰まっているロレックスのアイコン的モデルです。サイズが豊富。デザインのバリエーションも多いのが特徴です。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス デイデイト</h3>
+    <a href="/collections/rolex-daydate">
+      <img src="https://placehold.jp/240x100.png" alt="ロレックス デイデイト" width="240" height="100">
+    </a>
+    <p>
+      日付表示に加えて12時位置にフルスペルの曜日表示を備えています。ロレックスの中で唯一ステンレスモデルが存在せずプラチナ・ホワイトゴールド・イエローゴールド・ピンクゴールドの4つの素材のみが使用されるハイクラスモデルです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス デイトナ</h3>
+    {% comment %} {%- capture daytona_link -%}https://{{shop.domain}}/collections/rolex-daytona{%- endcapture -%} {% endcomment %}
+    <a href="/collections/rolex-daytona">
+      <img src="{{ 'mrx_daytona.png' | asset_url }}" alt="ロレックス デイトナ" width="240" height="100">
+    </a>
+    <p>
+      ロレックス唯一のクロノグラフモデルがオイスターパーペチュアル・コスモグラフ・デイトナ。プロカーレーサーのニーズに応じて設計されたモデルです。時計としての性能、ロレックスならではの高い防水性能はもちろん、常に品薄で資産価値が高い時計として知られています。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス ミルガウス</h3>
+    <a href="/collections/rolex-milgauss">
+      <img src="{{ 'mrx_milgauss.png' | asset_url }}" alt="ロレックス ミルガウス" width="240" height="100">
+    </a>
+    <p>
+      対磁対策がなされた専門職向け時計ですが、電化製品の普及により関心が高まっています。エクスプローラーのデザインをベースにしたシンプルさとイナズマ秒針が組み合わさった個性的なデザインも人気の理由です。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>ロレックス ヨットマスター</h3>
+    <a href="/collections/rolex-yachtmaster">
+      <img src="{{ 'mrx_yacht.png' | asset_url }}" alt="ロレックス ヨットマスター" width="240" height="100">
+    </a>
+    <p>ロレックススポーツラインの高級ライン。大人の極上のオフタイムを演出します。</p>
+  </div>
+  <!-- /.model -->
+</div>
+<!-- /.models -->

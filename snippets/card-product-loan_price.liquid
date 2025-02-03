@@ -1,0 +1,36 @@
+{%- if category == 'メンズウォッチ' or category == 'レディースウォッチ' -%}
+  {%- liquid
+    assign product_price = price | times: 0.01 | floor
+    assign divided_42 = product_price | divided_by: 42
+  -%}
+  {% comment %}
+    {%- liquid
+      assign kari = bunkatsu_42 |  times: 42
+      assign sa = price | minus: kari
+      assign shyokai = bunkatsu_42 | plus: sa
+    -%}
+  {% endcomment %}
+
+  {%- if product_price >= 30000 and divided_42 >= 3000 -%}
+    <span class="price-item price-item--regular divided">
+      ローン42回払い&nbsp;{%- if template == 'product' -%}<span>{%- endif -%}{{- divided_42 | times: 100 | money -}}{%- if template == 'product' -%}</span>{%- endif -%}{%- if template == 'product' -%}/月{%- endif -%}&nbsp;～
+    </span>
+  {%- endif -%}
+{%- else -%}
+  {%- liquid
+    assign product_price = price | times: 0.01 | floor
+    assign divided_30 = product_price | divided_by: 30
+  -%}
+  {% comment %}
+    {%- liquid
+      assign kari = bunkatsu_30 |  times: 30
+      assign sa = price | minus: kari
+      assign shyokai = bunkatsu_30 | plus: sa
+    -%}
+  {% endcomment %}
+  {%- if product_price >= 300000 and divided_30 >= 3000  -%}
+    <span class="price-item price-item--regular divided">
+      ローン30回払い&nbsp;{%- if template == 'product' -%}<span>{%- endif -%}{{- divided_30 | times: 100 | money -}}{%- if template == 'product' -%}</span>{%- endif -%}{%- if template == 'product' -%}/月{%- endif -%}&nbsp;～
+    </span>
+  {%- endif -%}
+{%- endif -%}

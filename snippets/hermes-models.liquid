@@ -1,0 +1,185 @@
+{% style %}
+@media screen and (width >= 450px) {
+  .collection-models__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .collection-models__header h2 {
+    margin: 0 0 3rem;
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a:hover,
+  .collection-models__header a:focus {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (width < 450px) {
+  .collection-models__header span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+  .collection-models {
+    background: rgba(var(--color-foreground), 0.03);
+    padding: 15px;
+    margin-top: 3rem;
+  }
+
+
+  @media screen and (width >= 450px) {
+    .models {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem 20px;
+    }
+  }
+
+  @media screen and (width < 450px) {
+    .collection-models h2 {
+      text-align: center;
+    }
+
+    .model {
+      padding: 10px;
+    }
+
+    .model + .model {
+      margin-top: 3rem;
+    }
+  }
+
+  .model {
+    box-shadow: var(--focused-base-box-shadow);
+  }
+
+  .model h3 {
+    text-align: center;
+  }
+
+  .model img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .model p {
+    padding: 0 15px;
+  }
+{% endstyle %}
+{%- assign name = collection.handle -%}
+<div class="collection-models__header">
+  <h2>{%- if name != 'hermes' -%}その他の{%- endif -%}エルメスの代表的なバッグ</h2>
+  <span><a href="/collections/hermes">エルメスの一覧にもどる</a></span>
+</div>
+<div class="models">
+  <div class="model">
+    <h3>エルメス バーキン</h3>
+    <a href="/collections/hermes-birkin">
+      <img src="{{ 'hermes_birkin.png' | asset_url }}" alt="エルメス バーキン" width="150" height="150">
+    </a>
+    <p>美しさのケリー+機能性も兼ね備えたのがバーキンです。開口部が大きく開き、外ポケットも前後に備わっています。ケリーと異なりバッグの内側にフラップを畳み、大きく口を開けてハンドバッグのようにして使うこともできてフォーマルからカジュアルな使い方までできる稀有なバッグです。バリエーションとして深型の大容量モデルに<strong>オータクロア</strong>があります。馬具の収納袋だった名残りと言われています。</p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス ケリー</h3>
+    <a href="/collections/hermes-kelly">
+      <img src="{{ 'hermes_kelly.png' | asset_url }}" alt="エルメス ケリー" width="150" height="150">
+    </a>
+    <p>台形のフォルム、三角形のマチ、鋭角のフラップを被せてベルトで留める仕様はエレガントなバッグの代名詞です。美しさを追求した結果、外側にポケットはついていません。1930年代にデザインされたものですが今でもモダンさを全く失っていません。バリエーションとしてかご編みの<strong>ケリーピクニック</strong>、深型の<strong>ケリースポーツ</strong>、小型の肩掛け<strong>ケリームーブ</strong>などがあります。</p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス ボリード</h3>
+    <a href="/collections/hermes-bolide">
+      <img src="{{ 'hermes_bolide.png' | asset_url }}" alt="エルメス ボリード" width="150" height="150">
+    </a>
+    <p>
+      道路事情が悪かった時代に、車に乗車中のバッグから荷物が飛び出してしまうのを防ぐため、ファスナー開閉式を採用した世界初のレザーバッグです。旅行バッグとして開発された経緯もあり収納力抜群ですが、現在はサイズ展開も増えて普段遣いやビジネスバッグとして利用される方も多いです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス ガーデンパーティ</h3>
+    <a href="/collections/hermes-gardenparty">
+      <img src="{{ 'hermes_gardenparty.png' | asset_url }}" alt="エルメス ガーデンパーティ" width="150" height="150">
+    </a>
+    <p>
+      その名の通り、もともと園芸用品を収めるバッグとしてデザインされました。キャンバス生地にレザーストラップという組み合わせが有名ですが、オールレザーモデルも展開されており、シックな装いからカジュアルまで日常使いとして取り入れやすいモデルです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス エブリン</h3>
+    <a href="/collections/hermes-evelyne">
+      <img src="{{ 'hermes_evelyne.png' | asset_url }}" alt="エルメス エブリン" width="150" height="150">
+    </a>
+    <p>
+      Hermesの「H」が大きくパンチングされたデザインがインパクト大の定番ショルダーバッグです。登場から50年経っても古さを感じさせないシンプルで完成されたシルエットが特徴で、気取らないラフなスタイルの女性に高い人気を誇ります。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス ピコタン(ロック)</h3>
+    <a href="/collections/hermes-picotin">
+      <img src="{{ 'hermes_picotin.png' | asset_url }}" alt="エルメス ピコタン(ロック)" width="150" height="150">
+    </a>
+    <p>
+      馬の餌袋がモチーフとなったピコタン。開口部が大きく開き、容量もたっぷりで人気のバッグです。現行品は実用性を考えて鍵付きとなり<strong>ピコタンロック</strong>と呼ばれます。シンプルなデザインが好みの方に喜ばれます。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス インザループ</h3>
+    <a href="/collections/hermes-intheloop">
+      <img src="{{ 'hermes_intheloop.png' | asset_url }}" alt="エルメス インザループ" width="150" height="150">
+    </a>
+    <p>
+      比較的最近のモデルで、丸いシルエットとサイズ感がピコタン(ロック)に近いことから人気を集めています。エルメスのジュエリーで有名な船の錨のチェーンをモチーフにした<strong>シェーヌダンクル</strong>と呼ばれる意匠がハンドル、底面、金具にあしらわれています。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>エルメス コンスタンス</h3>
+    <a href="/collections/hermes-constance">
+      <img src="{{ 'hermes_constance.png' | asset_url }}" alt="エルメス コンスタンス" width="150" height="150">
+    </a>
+    <p>
+      H字をそのままクラスプ(留め金)にしたデザインは非常にシンプルなのに一目でエルメスとわかる存在感。ストラップがスライドできるようになっており長い肩掛け、短い肩掛けにと自在に調節できます。品質の良い素材にシンプルなデザインはバーキン、ケリーに並ぶ人気を誇ります。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  {% comment %} <div class="model">
+    <h3>エルメス ゲタ</h3>
+    <a href="/collections/hermes-geta">
+      <img src="{{ 'hermes_geta.png' | asset_url }}" alt="エルメス ゲタ" width="150" height="150">
+    </a>
+    <p>
+      日本の下駄から着想したHモチーフのクラスプ(留め金具)が印象的なバッグ。フラップを留める金具が底鋲、ストラップ留め具を兼ねているミニマムなデザインです。コンスタンスと比べて幅広なストラップがよりスポーティでカジュアルな印象を与えます。
+    </p>
+  </div> {% endcomment %}
+  <!-- /.model -->
+</div>
+<!-- /.models -->

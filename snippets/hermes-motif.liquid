@@ -1,0 +1,128 @@
+{% style %}
+@media screen and (width >= 450px) {
+  .collection-models__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .collection-models__header h2 {
+    margin: 0 0 3rem;
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a:hover,
+  .collection-models__header a:focus {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (width < 450px) {
+  .collection-models__header span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+  .collection-models {
+    background: rgba(var(--color-foreground), 0.03);
+    padding: 15px;
+    margin-top: 3rem;
+  }
+
+
+  @media screen and (width >= 450px) {
+    .models {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem 20px;
+    }
+  }
+
+  @media screen and (width < 450px) {
+    .collection-models h2 {
+      text-align: center;
+    }
+
+    .model {
+      padding: 10px;
+    }
+
+    .model + .model {
+      margin-top: 3rem;
+    }
+  }
+
+  .model {
+    box-shadow: var(--focused-base-box-shadow);
+  }
+
+  .model h3 {
+    text-align: center;
+  }
+
+  .model img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .model p {
+    padding: 0 15px;
+  }
+{% endstyle %}
+<div class="collection-models__header">
+  <h2>エルメスに関連した商品</h2>
+  <span><a href="/collections/hermes">エルメスの一覧にもどる</a></span>
+</div>
+<div class="models">
+  <div class="model">
+    <h3>シェーヌダンクル</h3>
+    <a href="/collections/hermes-chainedancre">
+      <img src="https://placehold.jp/150x150.png" alt="エルメス シェーヌダンクル" width="150" height="150">
+    </a>
+    <p>
+      <ruby><rp>(</rp>錨<rt>いかり</rt><rp>)</rp></ruby>の鎖をモチーフとしたエルメスのシルバージュエリーです。
+      ブレスレットやネックレス、リングなどのジュエリーだけでなくバッグや食器、アパレルの柄にもモチーフとして幅広く用いられ、エルメスを代表する意匠の一つです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>スカーフ</h3>
+    <a href="/collections/hermes-scarf">
+      <img src="https://placehold.jp/150x150.png" alt="エルメス ツイリー・カレ" width="150" height="150">
+    </a>
+    <p>
+      エルメスといえば鮮やかな色あいのスカーフを思い浮かべる方もいるでしょう。
+      <strong>カレ</strong>は正方形をしており、<strong>ツイリー</strong>はリボンのような細長い形状をしています。
+      カレは一般的なスカーフと同様に物を包むことができます。一方、ツイリーはバッグや手首に巻きつけたり首にかけたりファッションアイテムとして楽しむことができます。
+      スカーフを留めておくリングも<strong>シェーヌダンクル</strong>モチーフを始めさまざまなアイテムがありますのでお気に入りを見つけてみてください。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3><ruby><rp>(</rp>H<rt>アッシュ</rt><rp>)</rp></ruby></h3>
+    <a href="/collections/hermes-h">
+      <img src="https://placehold.jp/150x150.png" alt="エルメス H(アッシュ)" width="150" height="150">
+    </a>
+    <p>
+      Hモチーフと呼ばれるエルメスの頭文字Hをデザインに落とし込んだアクセサリーです。
+      ピアスやネックレスを中心にした<strong>ポップH</strong>、バングルブレスレットの<strong>クリックH</strong>、<strong>Hベルト</strong>などがあります。
+      他のアイテムにもHを強調したデザインは見られエルメスの代表的なモチーフです。
+    </p>
+  </div>
+  <!-- /.model -->
+</div>
+<!-- /.models -->

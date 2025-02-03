@@ -1,0 +1,136 @@
+{% style %}
+@media screen and (width >= 450px) {
+  .collection-models__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .collection-models__header h2 {
+    margin: 0 0 3rem;
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a:hover,
+  .collection-models__header a:focus {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (width < 450px) {
+  .collection-models__header span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgb(var(--color-foreground));
+  }
+
+  .collection-models__header a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+  .collection-models {
+    background: rgba(var(--color-foreground), 0.03);
+    padding: 15px;
+    margin-top: 3rem;
+  }
+
+
+  @media screen and (width >= 450px) {
+    .models {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem 20px;
+    }
+  }
+
+  @media screen and (width < 450px) {
+    .collection-models h2 {
+      text-align: center;
+    }
+
+    .model {
+      padding: 10px;
+    }
+
+    .model + .model {
+      margin-top: 3rem;
+    }
+  }
+
+  .model {
+    box-shadow: var(--focused-base-box-shadow);
+  }
+
+  .model h3 {
+    text-align: center;
+  }
+
+  .model img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .model p {
+    padding: 0 15px;
+  }
+{% endstyle %}
+{%- assign name = collection.handle -%}
+<div class="collection-models__header">
+<h2>{%- if name != 'omega' -%}その他の{%- endif -%}オメガの{%- if name == 'omega' -%}おすすめ{%- endif -%}モデル</h2>
+<span>{%- if name != 'omega' -%}<a href="/collections/omega">オメガの一覧にもどる</a>{%- endif -%}</span>
+</div><!-- /.models__header -->
+<div class="models">
+  <div class="model">
+    <h3>オメガ スピードマスター</h3>
+    <a href="/collections/omega-speedmaster">
+      <img src="{{ 'mwo_speedmaster.png' | asset_url }}" alt="オメガ スピードマスター" width="240" height="100">
+    </a>
+    <p>
+      1969年、NASAによる人類初の月面着陸プロジェクトのアポロ計画に採用されたスピードマスター。オリジナルの「プロフェッショナル」以外にも自動巻き式、ケースが小ぶりなもの、コラボモデルなど非常にたくさんのモデルが存在します。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>オメガ シーマスター</h3>
+    <a href="/collections/omega-seamaster">
+      <img src="{{ 'mwo_seamaster.png' | asset_url }}" alt="オメガ シーマスター" width="240" height="100">
+    </a>
+    <p>
+      潜水家ジャック・マイヨールが当時の潜水世界記録101mを達成した時に着用したシーマスター。映画007でジェームズ・ボンドが身につけるのもこのモデルです。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>オメガ コンステレーション</h3>
+    <a href="/collections/omega-constellation">
+      <img src="{{ 'mwo_constellation.png' | asset_url }}" alt="オメガ コンステレーション" width="240" height="100">
+    </a>
+    <p>
+      コンステレーションはオメガ初の自動巻き腕時計で70年以上の歴史をもつモデルです。時計の精度を競う世界最高峰の「天文台コンクール」で全製品がクロノメーター規格を通過した高い精度を持つ時計であることから“世界一正確な時計”と呼ばれました。
+    </p>
+  </div>
+  <!-- /.model -->
+
+  <div class="model">
+    <h3>オメガ×スウォッチ</h3>
+    <a href="/collections/omega-swatch">
+      <img src="{{ 'mwo_swatch.png' | asset_url }}" alt="オメガ×スウォッチ" width="240" height="100">
+    </a>
+    <p>
+      2022年に登場したスウォッチとコラボレーションモデル。オメガの代表作スピードマスターをポップに仕上げたモデルです。
+      非対称のケース、タキメーターに施されたドットオーバー90、サブダイアルなどオリジナルの特徴をしっかりと再現しており男女問わず大人気です。
+      オメガは1992年にスウォッチグループ傘下になっています。
+    </p>
+  </div>
+  <!-- /.model -->
+</div>
+<!-- /.models -->
